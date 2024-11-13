@@ -20,7 +20,7 @@ public class App {
         System.out.println("*                                     *");
         System.out.println("***************************************");
         System.out.println();
-        
+
         System.out.print("Ingrese el tamaño de la figura: ");
         tamanio = sc.nextInt();
         System.out.print("Por favor ingrese un caracter: ");
@@ -28,7 +28,8 @@ public class App {
         caracter = caracterIngresado.charAt(0);
 
         // loading.crearLoading3('*');
-        loading.crearLoading3(caracter);
+        // loading.crearLoading3(caracter);
+        loading.crearLoading3(caracterIngresado);
         loading.crearFigura8(tamanio, caracter);
 
     }
