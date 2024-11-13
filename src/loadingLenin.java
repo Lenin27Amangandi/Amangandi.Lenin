@@ -1,25 +1,10 @@
 public class loadingLenin {
 
-    public void crearLoading3(char caracter) {
-        System.out.println("Loading 3: ");
-        int porcentaje, longitudBarra = 20;
-        String barrAnterios, barraposterior;
-        for (int i = 0; i < longitudBarra; i++) {
-            barrAnterios = " ".repeat(i);
-            barraposterior = " ".repeat(longitudBarra - i - 1);
-            porcentaje = ((i + 1) * 100 / longitudBarra);
-            System.out.print("\r[" + barrAnterios + caracter + barraposterior + "] " + porcentaje + " %");
-            try {
-                Thread.sleep(150);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        System.out.println();
-    }
+    private int tamaño;
+    private char caracter;
 
     public void crearFigura8(int nivel, char caracter) {
-        System.out.println("Figura 8: ");
+        System.out.println("\n Figura 8: ");
         System.out.println();
         for (int fila = 1; fila <= nivel; fila++) {
             for (int columna = 1; columna <= nivel; columna++) {
@@ -32,35 +17,59 @@ public class loadingLenin {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
 
-    public void crearLoading3(String cr) {
-        System.out.println();
+    public void crearLoading31(String caracter) {
+        System.out.println("\n loading 3:");
         int espaciosAdelante = 20, espaciosAtras = 0;
-        for (int i = 0; i <= 90; i += 10) {
-            while (espaciosAtras <= 20) {
-                System.out.print("\r " + "[" + " ".repeat(espaciosAtras) + cr + " ".repeat(espaciosAdelante) + "]" + i + "%");
+        boolean haciaDerecha = true;
+    
+        for (int i = 1; i <= 100; i++) {
+            System.out.print("\r " + "[" + " ".repeat(espaciosAtras) + caracter + " ".repeat(espaciosAdelante) + "] " + i + "%");
+    
+            if (haciaDerecha) {
                 espaciosAtras++;
                 espaciosAdelante--;
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
+                if (espaciosAtras == 20) {
+                    haciaDerecha = false;
                 }
-            }
-            while (espaciosAtras > 0) {
+            } else {
                 espaciosAtras--;
                 espaciosAdelante++;
-                System.out.print(
-                        "\r " + "[" + " ".repeat(espaciosAtras) + cr + " ".repeat(espaciosAdelante) + "]" + i + "%");
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
+                if (espaciosAtras == 0) {
+                    haciaDerecha = true;
                 }
             }
+            
+            try {
+                Thread.sleep(30);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
-        System.out.print("\r " + "[" + " ".repeat(espaciosAtras) + cr + " ".repeat(espaciosAdelante) + "]" + 100 + "%");
+        System.out.println();
     }
+
+    public int getTamaño() {
+        return tamaño;
+    }
+
+    public void setTamaño(int tamaño) {
+        if (tamaño<0) {
+            System.out.println("El tamaño no puede ser negativo");
+        }
+        this.tamaño = tamaño;
+    }
+
+    public char getCaracter() {
+        return caracter;
+    }
+
+    public void setCaracter(char caracter) {
+        this.caracter = caracter;
+    }
+    
+    
 }
